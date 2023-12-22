@@ -70,7 +70,7 @@ function getArgs() {
         demandOption: true,
       });
     })
-    .option("s", { alias: "skip-prompt", describe: "Don't prompt before killing the process on the requested port", type: "boolean", demandOption: false })
+    .option("s", { alias: 'skipPrompt', describe: "Don't prompt before killing the process on the requested port", type: "boolean", demandOption: false })
     .help(true)
     .argv;
 

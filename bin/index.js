@@ -22,14 +22,18 @@ async function checkAndFreePort(port) {
     output: process.stdout
   });
 
-  readline.question(`Would you like to kill ${processesOnPort.length > 1 ? 'them' : 'it'}? (Y/n) `, name => {
-    readline.close();
-    if(name === 'y' || name === '') {
-      killProcesses(processesOnPort);
-    } else {
-      process.exit(1)
-    }
-  });
+  if(args.skipPrompt) {
+    killProcesses(processesOnPort);
+  } else {
+    readline.question(`Would you like to kill ${processesOnPort.length > 1 ? 'them' : 'it'}? (Y/n) `, name => {
+      readline.close();
+      if(name === 'y' || name === '') {
+        killProcesses(processesOnPort);
+      } else {
+        process.exit(1)
+      }
+    });
+  }
 }
 
 checkAndFreePort(args.port);
