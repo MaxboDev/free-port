@@ -3,7 +3,7 @@ A simple utility to free a port prior to use, optionally prompting before stoppi
 
 If it finds that the port is being used by Docker it will stop the container using the port rather than stopping the whole Docker process and killing all your containers with it.
 
-Its particularly useful to put in your npm scripts before starting a server on a specific port. This will allow you to stop the process thats preventing this one from starting without having to go and find it.
+Its particularly useful to add this to your npm scripts before starting a server on a specific port. This will allow you to stop the process thats preventing this one from starting without having to go and find it.
 
 # Usage
 `free-port <port> [options]`
