@@ -9,15 +9,15 @@ Its particularly useful to put in your npm scripts before starting a server on a
 `free-port <port> [options]`
 
 # Options
-## -s, --skipPrompt
+### -s, --skipPrompt
 Don't prompt before killing the process on the requested port.
 
 # Examples
-## Free port 3000 - prompt before killing processes
+### Free port 3000 - prompt before killing processes
 `free-port 3000`
 
-## Free port 3000 - don't prompt before killing processes
+### Free port 3000 - don't prompt before killing processes
 `free-port 3000 -s`
 
-## Add before starting a web server in your package.json
+### Add before starting a web server in your package.json
 `free-port 3000 && start-server 3000`
