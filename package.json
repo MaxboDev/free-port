@@ -1,0 +1,17 @@
+{
+  "name": "free-port",
+  "version": "1.0.0",
+  "description": "A utility to free a port prior to use. Add this before starting a server and it will kill the process using the port, with an optional confirmation message before doing so.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "free",
+    "port",
+    "kill",
+    "process"
+  ],
+  "author": "MaxboDev",
+  "license": "MIT"
+}
