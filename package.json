@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "find-process": "^1.4.7",
-    "portscanner": "^2.2.0",
     "yargs": "^17.7.2"
   }
 }
