@@ -1,8 +1,10 @@
 {
-  "name": "free-port",
+  "name": "@maxbo/free-port",
   "version": "1.0.0",
   "description": "A utility to free a port prior to use. Add this before starting a server and it will kill the process using the port, with an optional confirmation message before doing so.",
-  "main": "index.js",
+  "author": "MaxboDev",
+  "license": "MIT",
+  "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +14,12 @@
     "kill",
     "process"
   ],
-  "author": "MaxboDev",
-  "license": "MIT"
+  "bin": {
+    "free-port": "./bin/index.js"
+  },
+  "dependencies": {
+    "find-process": "^1.4.7",
+    "portscanner": "^2.2.0",
+    "yargs": "^17.7.2"
+  }
 }
