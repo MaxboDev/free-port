@@ -1,0 +1,30 @@
+name: Cross-Platform Test
+
+# This specifies when the action should run.
+on: [push, pull_request]
+
+jobs:
+  test:
+    # This starts the matrix strategy.
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [14.x, 20.x]
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Sets up Node.js using a version from the matrix
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    # Installs dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Runs your test script
+    - name: Run tests
+      run: npm test
