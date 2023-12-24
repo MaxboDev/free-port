@@ -42,14 +42,13 @@ jobs:
       with:
         node-version: '14'
         registry-url: 'https://registry.npmjs.org'
-
     - name: Install dependencies
       run: npm install
-
+    - name: Show changes
+      run: git diff
     - name: Calculate version
       id: calc_version
       run: bash ci/getVersion.sh
-
     - name: Update version
       run: npm version ${{ steps.calc_version.outputs.VERSION }}
 
