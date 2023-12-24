@@ -6,7 +6,7 @@ latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 
 # If there are no tags, start with 1.0.0
 if [[ -z "$latestTag" ]]; then
-  echo "::set-output name=VERSION::1.0.0"
+  echo "VERSION=1.0.0" >> $GITHUB_STATE
 else
   # If there are tags, increment the patch version
   versionParts=(${latestTag//./ })
