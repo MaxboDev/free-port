@@ -4,6 +4,8 @@
 git fetch --tags
 latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 
+echo latestTag: $latestTag
+
 # If there are no tags, start with 1.0.0
 if [[ -z "$latestTag" ]]; then
   echo "VERSION=1.0.0" >> $GITHUB_STATE
