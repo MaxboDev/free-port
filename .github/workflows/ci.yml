@@ -34,7 +34,6 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-
     steps:
     - uses: actions/checkout@v2
 
@@ -49,7 +48,7 @@ jobs:
 
     - name: Calculate version
       id: calc_version
-      run: echo "::set-output name=VERSION::$(date +%Y.%m.%d.%H.%M)"
+      run: bash ci/getVersion.sh
 
     - name: Update version
       run: npm version ${{ steps.calc_version.outputs.VERSION }}
