@@ -51,7 +51,7 @@ jobs:
       id: calc_version
       run: bash ci/getVersion.sh
     - name: Update version
-      run: npm version ${{ steps.calc_version.outputs.VERSION }}
+      run: npm version  ${{ env.VERSION }}
 
     # - name: Publish
     #   run: npm publish
