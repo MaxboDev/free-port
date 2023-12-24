@@ -10,7 +10,9 @@
   "license": "MIT",
   "main": "bin/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "nyc npm test"
   },
   "keywords": [
     "free",
@@ -26,9 +28,14 @@
   },
   "dependencies": {
     "find-process": "^1.4.7",
+    "wait-for-expect": "^3.0.2",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "exclude": ["**/tests/**"]
   }
 }

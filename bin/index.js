@@ -1,19 +1,17 @@
 #! /usr/bin/env node
-
-const net = require('net');
-const yargs = require("yargs");
 const { getArgs, getProcessInfoForPort, printProcessInfo, killProcesses } = require('./utils');
 
 const args = getArgs();
 if(args === undefined) {
-  return;
+  console.log('got hereeeeee')
+  process.exit(1);
 }
 
 async function checkAndFreePort(port) {
   const processesOnPort = await getProcessInfoForPort(port);
   if(processesOnPort.length === 0) {
     console.log(`🎉 Port ${port} is free`);
-    return;
+    process.exit(0);
   }
 
   await printProcessInfo(processesOnPort, port);
@@ -23,17 +21,22 @@ async function checkAndFreePort(port) {
   });
 
   if(args.skipPrompt) {
-    killProcesses(processesOnPort);
+    await killProcesses(processesOnPort);
   } else {
-    readline.question(`Would you like to kill ${processesOnPort.length > 1 ? 'them' : 'it'}? (Y/n) `, name => {
-      readline.close();
-      if(name === 'y' || name === '') {
-        killProcesses(processesOnPort);
-      } else {
-        process.exit(1)
-      }
+    await new Promise((resolve) => {
+      readline.question(`Would you like to kill ${processesOnPort.length > 1 ? 'them' : 'it'}? (Y/n) `, async (name) => {
+        readline.close();
+        if(name === 'y' || name === '') {
+          await killProcesses(processesOnPort);
+          resolve();
+        } else {
+          process.exit(1)
+        }
+      });
     });
   }
 }
 
-checkAndFreePort(args.port);
+checkAndFreePort(args.port).then(() => {
+  process.exit(0);
+});

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`free-port CLI prints help text and exits when run with no arguments 1`] = `
+"
+Usage: free-port <port> [options]
+
+Positionals:
+  port  The port to free e.g. 3000                                      [number]
+
+Options:
+      --version     Show version number                                [boolean]
+  -s, --skipPrompt  Don't prompt before killing the process on the requested
+                    port                                               [boolean]
+      --help        Show help                                          [boolean]
+
+Not enough non-option arguments: got 0, need at least 1
+"
+`;
