@@ -13,5 +13,5 @@ else
   patchVersion=${versionParts[2]}
   patchVersion=$((patchVersion+1))
   newVersion="${versionParts[0]}.${versionParts[1]}.$patchVersion"
-  echo "::set-output name=VERSION::$newVersion"
+  echo "VERSION=$newVersion" >> $GITHUB_STATE
 fi
