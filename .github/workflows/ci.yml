@@ -50,12 +50,11 @@ jobs:
     - name: Calculate version
       id: calc_version
       run: bash ci/getVersion.sh
-    - name: Update version
-      run: |
-        echo "Updating package.json version to ${{ env.VERSION }}"
-        npm version  ${{ env.VERSION }}
-
-    # - name: Publish
-    #   run: npm publish
-    #   env:
-    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # - name: Update version
+    #   run: |
+    #     echo "Updating package.json version to ${{ env.VERSION }}"
+    #     npm version  ${{ env.VERSION }} --allow-same-version --no-git-tag-version
+    - name: Publish
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
