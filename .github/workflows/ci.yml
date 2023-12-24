@@ -47,13 +47,6 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
     - name: Install dependencies
       run: npm ci
-    - name: Calculate version
-      id: calc_version
-      run: bash ci/getVersion.sh
-    # - name: Update version
-    #   run: |
-    #     echo "Updating package.json version to ${{ env.VERSION }}"
-    #     npm version  ${{ env.VERSION }} --allow-same-version --no-git-tag-version
     - name: Publish
       run: npm publish
       env:
