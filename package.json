@@ -1,6 +1,6 @@
 {
   "name": "@maxbo/free-port",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "A utility to free a port prior to use. Add this before starting a server and it will kill the process using the port, optionally prompting before doing so. It will also stop docker containers without stopping the entire docker process.",
   "author": "MaxboDev",
   "repository": {
