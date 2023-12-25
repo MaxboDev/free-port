@@ -75,7 +75,7 @@ describe('free-port CLI', () => {
     freePortProcess.stdin.write('\n'); // simulate user pressing enter
 
     await waitForExpect(() => {
-      expect(output).toMatch(/.*☠️  Killing node - \d+\r✅ Killed process: node - \d+/);
+      expect(output).toMatch(/.*☠️  Killing node(.exe)? - \d+\r✅ Killed process: node(.exe)? - \d+/);
     }, 2000);
 
     await waitForExpect(() => {
