@@ -2,10 +2,6 @@
 const { getArgs, getProcessInfoForPort, printProcessInfo, killProcesses } = require('./utils');
 
 const args = getArgs();
-if(args === undefined) {
-  console.log('got hereeeeee')
-  process.exit(1);
-}
 
 async function checkAndFreePort(port) {
   const processesOnPort = await getProcessInfoForPort(port);
