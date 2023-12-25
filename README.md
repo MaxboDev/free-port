@@ -1,3 +1,5 @@
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/MaxboDev/free-port/.github/workflows/ci.yml?branch=main)
+
 # free-port
 A simple utility to free a port prior to use, optionally prompting before stopping the process.
 
