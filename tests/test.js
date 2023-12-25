@@ -52,10 +52,6 @@ describe('free-port CLI', () => {
       serverProcessExited = true;
     });
 
-    serverProcess.on('error', (error) => {
-      console.error('Server process error:', error);
-    });
-
     await waitForExpect(async () => {
       expect(await findProcess('port', testPort)).toHaveLength(1);
     }, 1000);
@@ -72,13 +68,9 @@ describe('free-port CLI', () => {
       output += data;
     });
 
-    freePortProcess.on('error', (error) => {
-      console.error('free-port process error:', error);
-    });
-
     await waitForExpect(() => {
       expect(output).toMatch(/The following processes are running on port 1234:\n  👾 node: \d+\nWould you like to kill it\? \(Y\/n\) /);
-    });
+    }, 1000);
 
     freePortProcess.stdin.write('\n'); // simulate user pressing enter
 
@@ -146,10 +138,6 @@ describe('free-port CLI', () => {
       serverProcessExited = true;
     });
 
-    serverProcess.on('error', (error) => {
-      console.error('Server process error:', error);
-    });
-
     await waitForExpect(async () => {
       expect(await findProcess('port', testPort)).toHaveLength(1);
     }, 1000);
@@ -166,13 +154,9 @@ describe('free-port CLI', () => {
       output += data;
     });
 
-    freePortProcess.on('error', (error) => {
-      console.error('free-port process error:', error);
-    });
-
     await waitForExpect(() => {
       expect(output).toMatch(/The following processes are running on port 1234:\n  👾 node: \d+\nWould you like to kill it\? \(Y\/n\) /);
-    });
+    }, 1000);
 
     freePortProcess.stdin.write('n\n'); // simulate user pressing n and then enter
 
