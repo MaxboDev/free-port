@@ -155,7 +155,7 @@ describe('free-port CLI', () => {
     });
 
     await waitForExpect(() => {
-      expect(output).toMatch(/The following processes are running on port 1234:\n  👾 node: \d+\nWould you like to kill it\? \(Y\/n\) /);
+      expect(output).toMatch(/The following processes are running on port 1234:\r?\n  👾 node: \d+\r?\nWould you like to kill it\? \(Y\/n\) /);
     }, 1000);
 
     freePortProcess.stdin.write('n\n'); // simulate user pressing n and then enter
