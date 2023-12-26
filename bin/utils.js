@@ -78,7 +78,7 @@ function getArgs() {
 }
 
 function processIsDocker(processName) {
-  return process.name === ('docker') || processName === 'docker-proxy' || processName === 'Docker.exe';
+  return processName === ('Docker') || processName === ('docker') || processName === 'docker-proxy' || processName === 'Docker.exe';
 }
 
 async function getProcessInfoForPort(port) {

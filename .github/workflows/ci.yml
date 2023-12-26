@@ -14,21 +14,18 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install Docker
-      run: |
-        if [[ "${{ runner.os }}" == "macOS" ]]; then
-          brew install --cask docker
-          open /Applications/Docker.app
-          sudo service docker start
-        fi
-    - name: Verify Docker installation
-      run: |
-        docker --version
-        docker run hello-world
     - name: Install dependencies
       run: npm install
     - name: Run tests
-      run: sudo npm run test:ci
+      run: |
+        if [[ "${{ runner.os }}" == "Windows" ]]; then
+          npm run test:win
+        elif [[ "${{ runner.os }}" == "macOS" ]]; then
+          npm run test:mac
+        else
+          npm run test:nix
+        fi
+      # run: sudo npm run test:ci
 
   publish:
     needs: test
