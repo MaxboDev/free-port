@@ -22,9 +22,8 @@ jobs:
         elif [[ "${{ runner.os }}" == "macOS" ]]; then
           npm run test:mac
         else
-          npm run test:nix
+          sudo npm run test:nix
         fi
-      # run: sudo npm run test:ci
 
   publish:
     needs: test
