@@ -19,6 +19,7 @@ jobs:
         if [[ "${{ runner.os }}" == "macOS" ]]; then
           brew install --cask docker
           open /Applications/Docker.app
+          sudo service docker start
         fi
     - name: Verify Docker installation
       run: |
