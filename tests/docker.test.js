@@ -36,6 +36,7 @@ describe('Docker tests', () => {
         output += data;
       });
       await new Promise((resolve) => dockerPs.on('close', resolve));
+      console.log(output);
       expect(output).toContain('test-container');
     }, 4000);
 
