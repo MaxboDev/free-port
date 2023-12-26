@@ -77,13 +77,17 @@ function getArgs() {
   return options;
 }
 
+function processIsDocker(processName) {
+  return process.name === ('docker') || processName === 'docker-proxy' || processName === 'Docker.exe';
+}
+
 async function getProcessInfoForPort(port) {
   const processes = await findProcess('port', port);
 
   const mappedProcesses = processes.map(async process => ({
     pid: process.pid,
     name: process.name,
-    containers: process.name.startsWith('Docker') ? await getDockerContainersUsingPort(port) : undefined,
+    containers: processIsDocker(process.name) ? await getDockerContainersUsingPort(port) : undefined,
   }));
 
   return await Promise.all(mappedProcesses);
