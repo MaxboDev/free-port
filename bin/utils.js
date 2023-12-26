@@ -74,11 +74,6 @@ function getArgs() {
     .help(true)
     .argv;
 
-  if(options.port === null) {
-    yargs.showHelp();
-    return undefined;
-  }
-
   return options;
 }
 

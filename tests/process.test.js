@@ -6,7 +6,7 @@ const { logConsoleOutput } = require('./testUtils');
 
 const testPort = 1234;
 
-describe('free-port CLI', () => {
+describe('Process tests', () => {
   let serverProcess;
 
   afterEach(() => {

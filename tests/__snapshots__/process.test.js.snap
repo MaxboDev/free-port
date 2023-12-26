@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`free-port CLI prints help text and exits when run with no arguments 1`] = `
+exports[`Process tests prints help text and exits when run with no arguments 1`] = `
 "
 Usage: free-port <port> [options]
 
