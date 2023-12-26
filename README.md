@@ -1,6 +1,6 @@
-![Windows Workflow Status](https://img.shields.io/github/actions/workflow/status/MaxboDev/free-port/ci.yml?logo=windows&label=Windows)
-![macOS Workflow Status](https://img.shields.io/github/actions/workflow/status/MaxboDev/free-port/ci.yml?logo=apple&label=macOS)
-![Ubuntu Workflow Status](https://img.shields.io/github/actions/workflow/status/MaxboDev/free-port/ci.yml?logo=ubuntu&label=Ubuntu)
+[![Windows Workflow Status](https://img.shields.io/github/actions/workflow/status/MaxboDev/free-port/ci.yml?logo=windows&label=Windows)](https://github.com/MaxboDev/free-port/actions/workflows/ci.yml)
+[![macOS Workflow Status](https://img.shields.io/github/actions/workflow/status/MaxboDev/free-port/ci.yml?logo=apple&label=macOS)](https://github.com/MaxboDev/free-port/actions/workflows/ci.yml)
+[![Ubuntu Workflow Status](https://img.shields.io/github/actions/workflow/status/MaxboDev/free-port/ci.yml?logo=ubuntu&label=Ubuntu)](https://github.com/MaxboDev/free-port/actions/workflows/ci.yml)
 
 # free-port
 A simple utility to free a port prior to use, optionally prompting before stopping the process.
