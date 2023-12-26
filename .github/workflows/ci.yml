@@ -16,14 +16,7 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Run tests
-      run: |
-        if [[ "${{ runner.os }}" == "Windows" ]]; then
-          npm run test:win
-        elif [[ "${{ runner.os }}" == "macOS" ]]; then
-          npm run test:mac
-        else
-          sudo npm run test:nix
-        fi
+      run: npm run test:ci
 
   publish:
     needs: test
