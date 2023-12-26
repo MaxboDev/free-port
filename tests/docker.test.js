@@ -56,6 +56,10 @@ describe('Docker tests', () => {
 
     freePortProcess.stdin.write('y\n'); // simulate user pressing y and then enter
 
+    await waitForExpect(() => {
+      expect(output).toContain('✅ Stopped container: test-container -');
+    }, 4000);
+
     // Check if the Docker container is stopped
     await waitForExpect(async () => {
       const dockerPs = spawn('docker', ['ps']);
