@@ -10,7 +10,7 @@ describe('Docker tests', () => {
 
   beforeAll(async () => {
     await dockerPullNginx();
-  });
+  }, 10000);
 
   afterEach(() => {
     serverProcess?.kill();
