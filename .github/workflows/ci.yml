@@ -2,17 +2,17 @@ name: Cross-Platform Test
 on: [push, pull_request]
 jobs:
   test-linux:
-    uses: ./test-steps.yml
+    uses: ./.github/workflows/test-steps.yml@main
     with:
       os: ubuntu-latest
       test-command: sudo npm run test:nix
   test-macos:
-    uses: ./test-steps.yml
+    uses: ./.github/workflows/test-steps.yml@main
     with:
       os: macos-latest
       test-command: npm run test:mac
   test-windows:
-    uses: ./test-steps.yml
+    uses: ./.github/workflows/test-steps.yml@main
     with:
       os: windows-latest
       test-command: npm run test:win
