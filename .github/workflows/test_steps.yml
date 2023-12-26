@@ -8,9 +8,6 @@ on:
       test-command:
         required: true
         type: string
-    secrets:
-      npm-token:
-        required: true
 jobs:
   test:
     strategy:
