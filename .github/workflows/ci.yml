@@ -1,11 +1,11 @@
 name: Cross-Platform Test
 on: [push, pull_request]
 jobs:
-  test:
+  test-linux:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
         node-version: [14.x, 20.x]
     steps:
     - uses: actions/checkout@v2
@@ -16,10 +16,44 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Run tests
-      run: npm run test:ci
+      run: sudo npm run test:nix
+
+  test-macos:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+        node-version: [14.x, 20.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: npm run test:mac
+
+  test-windows:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest]
+        node-version: [14.x, 20.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: npm run test:win
 
   publish:
-    needs: test
+    needs: [test-linux, test-macos, test-windows]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
