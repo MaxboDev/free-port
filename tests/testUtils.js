@@ -1,7 +1,7 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
-module.exports = { logConsoleOutput, killTestDockerContainer };
+module.exports = { logConsoleOutput, killTestDockerContainer, dockerPullNginx };
 
 function logConsoleOutput(process) {
   process.stdout.on('data', (data) => {
@@ -30,4 +30,8 @@ async function killTestDockerContainer() {
     // Ignore the error if the container does not exist
     // console.error('Remove Docker Container Error 2:', error);
   }
+}
+
+async function dockerPullNginx() {
+  await exec('docker pull nginx');
 }

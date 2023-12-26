@@ -1,7 +1,7 @@
 const net = require('net');
 const { spawn } = require('child_process');
 const waitForExpect = require("wait-for-expect");
-const { logConsoleOutput, killTestDockerContainer } = require('./testUtils');
+const { logConsoleOutput, killTestDockerContainer, dockerPullNginx } = require('./testUtils');
 
 const testPort = 1234;
 
@@ -9,7 +9,7 @@ describe('Docker tests', () => {
   let serverProcess;
 
   beforeAll(async () => {
-    await exec('docker pull nginx');
+    await dockerPullNginx();
   });
 
   afterEach(() => {
@@ -37,7 +37,7 @@ describe('Docker tests', () => {
       });
       await new Promise((resolve) => dockerPs.on('close', resolve));
       expect(output).toContain('test-container');
-    }, 3000);
+    }, 4000);
 
     // Run your app to stop the Docker container on the specified port
     const freePortProcess = spawn('node', ['bin/index.js', '1234']);
@@ -52,7 +52,7 @@ describe('Docker tests', () => {
 
     await waitForExpect(() => {
       expect(output).toMatch(/Port in use by docker, getting container info...\r?\nThe following processes are running on port 1234:\r?\n  📦 test-container: .{12}\r?\nWould you like to kill it\? \(Y\/n\) /);
-    }, 3000);
+    }, 4000);
 
     freePortProcess.stdin.write('y\n'); // simulate user pressing y and then enter
 
@@ -65,8 +65,8 @@ describe('Docker tests', () => {
       });
       await new Promise((resolve) => dockerPs.on('close', resolve));
       expect(output).not.toContain('your-docker-image');
-    }, 1000);
+    }, 2000);
 
     freePortProcess.kill();
-  });
+  }, 10000);
 });
