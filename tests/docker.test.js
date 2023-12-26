@@ -8,6 +8,10 @@ const testPort = 1234;
 describe('Docker tests', () => {
   let serverProcess;
 
+  beforeAll(async () => {
+    await exec('docker pull nginx');
+  });
+
   afterEach(() => {
     serverProcess?.kill();
   });
@@ -33,7 +37,7 @@ describe('Docker tests', () => {
       });
       await new Promise((resolve) => dockerPs.on('close', resolve));
       expect(output).toContain('test-container');
-    }, 2000);
+    }, 3000);
 
     // Run your app to stop the Docker container on the specified port
     const freePortProcess = spawn('node', ['bin/index.js', '1234']);
