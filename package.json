@@ -31,6 +31,7 @@
     "container"
   ],
   "bin": {
+    "freeport": "./bin/index.js",
     "free-port": "./bin/index.js"
   },
   "dependencies": {
